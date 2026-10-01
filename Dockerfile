@@ -14,9 +14,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copia el resto de la aplicación
 COPY . .
 
-# Copy and make entrypoint executable
+# Copy and make entrypoint executable (sanitizing CRLF line endings for Linux compatibility)
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.sh && chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Expone el puerto en el que corre la aplicación
 EXPOSE 5000

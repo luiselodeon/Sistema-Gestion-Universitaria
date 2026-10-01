@@ -19,10 +19,10 @@ fake = Faker('es_MX')  # Mexican Spanish locale
 # Database connection
 def get_db_connection():
     return mysql.connector.connect(
-        host=os.getenv('DB_HOST', 'localhost'),
-        user=os.getenv('DB_USER', 'root'),
-        password=os.getenv('DB_PASSWORD', 'rootpassword'),
-        database=os.getenv('DB_NAME', 'universidad_db')
+        host=os.getenv('DB_HOST', 'proyecto_bases_mysql_db'),
+        user=os.getenv('DB_USER') or os.getenv('MYSQL_USER', 'myuser'),
+        password=os.getenv('DB_PASSWORD') or os.getenv('MYSQL_PASSWORD', 'mypassword'),
+        database=os.getenv('DB_NAME') or os.getenv('MYSQL_DATABASE', 'controlescolar_db')
     )
 
 def clear_database(cursor):

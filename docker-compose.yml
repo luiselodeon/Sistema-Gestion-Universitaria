@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   proyecto_bases_mysql_db:
     image: mysql:8.0

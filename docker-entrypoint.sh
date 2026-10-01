@@ -6,13 +6,19 @@ echo "Waiting for MySQL to be ready..."
 # Wait for MySQL using Python connection attempt
 until python3 << END
 import sys
+import os
 import mysql.connector
 try:
+    host = os.getenv("DB_HOST", "proyecto_bases_mysql_db")
+    user = os.getenv("DB_USER") or os.getenv("MYSQL_USER", "myuser")
+    password = os.getenv("DB_PASSWORD") or os.getenv("MYSQL_PASSWORD", "mypassword")
+    database = os.getenv("DB_NAME") or os.getenv("MYSQL_DATABASE", "controlescolar_db")
+
     conn = mysql.connector.connect(
-        host="${DB_HOST}",
-        user="${DB_USER}",
-        password="${DB_PASSWORD}",
-        database="${DB_NAME}"
+        host=host,
+        user=user,
+        password=password,
+        database=database
     )
     conn.close()
     sys.exit(0)
