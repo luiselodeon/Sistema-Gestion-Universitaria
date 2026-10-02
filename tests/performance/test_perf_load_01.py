@@ -30,7 +30,7 @@ class TestTCPerfLoad01SustainedPeak:
         y la tasa de error sea menor al 0.5%.
         """
         target_url = os.getenv("TEST_TARGET_URL", "http://localhost:5002")
-        endpoint = f"{target_url}/estudiantes/inscripciones"
+        endpoint = f"{target_url}/gestion_estudiantes/inscripciones"
 
         try:
             # Comprobar conectividad con el servicio web

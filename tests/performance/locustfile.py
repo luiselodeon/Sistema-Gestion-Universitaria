@@ -51,8 +51,8 @@ class StudentEnrollmentUser(HttpUser):
         Evalúa el costo computacional de los JOINs relacionales y el renderizado HTML.
         """
         with self.client.get(
-            "/estudiantes/inscripciones",
-            name="GET /estudiantes/inscripciones",
+            "/gestion_estudiantes/inscripciones",
+            name="GET /gestion_estudiantes/inscripciones",
             catch_response=True
         ) as response:
             if response.status_code == 200:
